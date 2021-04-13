@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TableRow
+        android:id="@+id/table_row1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/record_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:text="Name"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/record_alert"
+            android:layout_width="463dp"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/record_popular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/record_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:text="quantity"
+            android:textColor="#000" />
+    </TableRow>
+</LinearLayout>

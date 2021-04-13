@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4EDED"
+    android:orientation="vertical">
+
+    <SearchView
+        android:id="@+id/search"
+        android:queryHint="Search Chocolates Here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </SearchView>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="398dp"
+        android:layout_height="188dp"
+        android:layout_below="@+id/search" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/changeToAddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="serif"
+            android:onClick="AddEmployee"
+            android:text="Add Chocolates to list"
+            app:backgroundTint="#F607EA" />
+
+        <Button
+            android:id="@+id/refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="serif"
+            android:text="Refresh"
+            app:backgroundTint="#F607EA"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="Chocolate need to made"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <TableLayout
+            android:id="@+id/table_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dip"
+                android:background="#ff0000" />
+        </TableLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
