@@ -33,6 +33,7 @@
             android:fontFamily="serif"
             android:onClick="AddEmployee"
             android:text="Add Chocolates to list"
+            android:textSize="20sp"
             app:backgroundTint="#F607EA" />
 
         <Button
@@ -42,7 +43,8 @@
             android:layout_gravity="center"
             android:fontFamily="serif"
             android:text="Refresh"
-            app:backgroundTint="#F607EA"/>
+            android:textSize="20sp"
+            app:backgroundTint="#F607EA" />
 
         <TextView
             android:layout_width="match_parent"
@@ -72,22 +74,25 @@
         android:layout_height="wrap_content"
         android:padding="10dp">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="serif"
-        android:text="Name"
-        android:textColor="#000" />
-    <TextView
-        android:id="@+id/position2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="serif"
-        android:text="Quantity"
-        android:textColor="#000" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:text="Name"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/position2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:text="Quantity"
+            android:textColor="#000"
+            android:textSize="20sp" />
     </TableRow>
 
     <androidx.recyclerview.widget.RecyclerView
