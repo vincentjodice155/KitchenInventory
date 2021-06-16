@@ -74,7 +74,8 @@
             android:hint="Name"
             android:padding="8dp"
             android:textColor="#673AB7"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="textShortMessage"/>
 
         <TextView
             android:id="@+id/textView2"
@@ -93,7 +94,8 @@
             android:hint="Alert Level"
             android:padding="8dp"
             android:textColor="#673AB7"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="textShortMessage"/>
 
         <TextView
             android:id="@+id/textView3"
@@ -112,7 +114,8 @@
             android:hint="Quantity Level"
             android:padding="8dp"
             android:textColor="#673AB7"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="textShortMessage"/>
 
         <TextView
             android:id="@+id/textView4"
@@ -131,7 +134,8 @@
             android:hint="Popular"
             android:padding="8dp"
             android:textColor="#673AB7"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="textShortMessage"/>
 
 
     </LinearLayout>

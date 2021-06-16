@@ -9,17 +9,17 @@
 
     <Button
         android:id="@+id/goBackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="173dp"
+        android:layout_height="57dp"
         android:text="Go Back to home"
         android:textSize="18sp"
         app:backgroundTint="#E905FA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintHorizontal_bias="0.958"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.332" />
 
     <Button
         android:id="@+id/updateButton"
@@ -30,9 +30,10 @@
         app:backgroundTint="#E905FA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.399" />
 
     <LinearLayout
         android:id="@+id/list"
@@ -78,7 +79,8 @@
             android:hint="Quantity Level"
             android:padding="8dp"
             android:textColor="#673AB7"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="textShortMessage"/>
 
 
     </LinearLayout>
@@ -92,24 +94,24 @@
         app:backgroundTint="#E905FA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.334" />
 
     <Button
         android:id="@+id/subButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="93dp"
+        android:layout_height="41dp"
         android:text="-"
         android:textSize="20sp"
         app:backgroundTint="#E905FA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintHorizontal_bias="0.236"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.338" />
 
     <EditText
         android:id="@+id/nameOfQuantity"

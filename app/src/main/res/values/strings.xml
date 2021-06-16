@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Kitchen</string>
     <string name="label">Add Chocolate to List</string>
+    <string name="username">Enter Pin</string>
+    <string name="password">password</string>
+    <string name="cancel" />
 </resources>

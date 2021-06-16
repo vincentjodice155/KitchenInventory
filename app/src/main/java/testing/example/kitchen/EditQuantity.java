@@ -86,7 +86,6 @@ public class EditQuantity extends AppCompatActivity {
         Toast.makeText(EditQuantity.this,("Adding 1 more "  + name ),Toast.LENGTH_SHORT).show();
         String quantity = eQuantity.getText().toString();
         int quant = Integer.parseInt(quantity);
-        System.out.println(quant);
         quant++;
         String newQuantity = String.valueOf(quant);
         eQuantity.setText(newQuantity);
