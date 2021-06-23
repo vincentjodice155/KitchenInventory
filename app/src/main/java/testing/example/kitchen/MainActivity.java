@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter adapter;
     ArrayList<String> searchList;
     SearchView searchV;
-    int test = 1;
 
     //initiliaze objects for database data fetching
     RecyclerView recyclerView;
@@ -59,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     //create button to change to the add chocolates to database screen
     Button changeToAddButton;
     Button refreshButton;
+    int test = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
