@@ -43,8 +43,8 @@
         android:background="@drawable/layoutstyle"
         android:orientation="vertical"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="256dp">
+        tools:layout_editor_absoluteX="-74dp"
+        tools:layout_editor_absoluteY="202dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,10 +72,10 @@
             android:background="@drawable/buttonstyle"
             android:fontFamily="serif"
             android:hint="Name"
+            android:inputType="textShortMessage"
             android:padding="8dp"
             android:textColor="#673AB7"
-            android:textSize="20sp"
-            android:inputType="textShortMessage"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -92,10 +92,10 @@
             android:background="@drawable/buttonstyle"
             android:fontFamily="serif"
             android:hint="Alert Level"
+            android:inputType="textShortMessage"
             android:padding="8dp"
             android:textColor="#673AB7"
-            android:textSize="20sp"
-            android:inputType="textShortMessage"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -112,10 +112,10 @@
             android:background="@drawable/buttonstyle"
             android:fontFamily="serif"
             android:hint="Quantity Level"
+            android:inputType="textShortMessage"
             android:padding="8dp"
             android:textColor="#673AB7"
-            android:textSize="20sp"
-            android:inputType="textShortMessage"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -132,10 +132,10 @@
             android:background="@drawable/buttonstyle"
             android:fontFamily="serif"
             android:hint="Popular"
+            android:inputType="textShortMessage"
             android:padding="8dp"
             android:textColor="#673AB7"
-            android:textSize="20sp"
-            android:inputType="textShortMessage"/>
+            android:textSize="20sp" />
 
 
     </LinearLayout>
