@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter adapter;
     ArrayList<String> searchList;
     SearchView searchV;
+    int test = 1;
 
     //initiliaze objects for database data fetching
     RecyclerView recyclerView;
