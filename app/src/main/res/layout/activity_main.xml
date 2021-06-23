@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="Chocolate need to made"
+            android:text="Chocolate that need to made"
             android:textColor="#000"
             android:textSize="20sp" />
 

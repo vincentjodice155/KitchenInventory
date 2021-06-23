@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     //create button to change to the add chocolates to database screen
     Button changeToAddButton;
     Button refreshButton;
-    int test = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -246,7 +245,6 @@ public class MainActivity extends AppCompatActivity {
         String response = "";
         if(value == 1) {
             response = "Yes";
-            System.out.println("This works");
         }
         else{
             response = "No";
