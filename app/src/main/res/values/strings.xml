@@ -4,4 +4,13 @@
     <string name="username">Enter Pin</string>
     <string name="password">password</string>
     <string name="cancel" />
+    <string name="name">Name</string>
+    <string name="save_chocolate_to_list">Save Chocolate to list</string>
+    <string name="go_back_to_home">Go Back to home</string>
+    <string name="enter_rest_of_name_here">Enter Rest of Name Here</string>
+    <string name="alert_level">Alert Level</string>
+    <string name="quantity">Quantity</string>
+    <string name="quantity_level">Quantity Level</string>
+    <string name="popular_1_for_yes_0_for_no">Popular (1 for yes 0 for no)</string>
+    <string name="popular">Popular</string>
 </resources>

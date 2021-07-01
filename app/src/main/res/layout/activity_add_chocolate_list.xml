@@ -10,7 +10,7 @@
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Chocolate to list"
+        android:text="@string/save_chocolate_to_list"
         android:textSize="20sp"
         app:backgroundTint="#F607EA"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +23,7 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go Back to home"
+        android:text="@string/go_back_to_home"
         android:textSize="20sp"
         app:backgroundTint="#F607EA"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,7 +61,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="@string/name"
             android:textSize="18sp" />
 
         <Spinner
@@ -76,7 +76,7 @@
             android:layout_margin="8dp"
             android:background="@drawable/buttonstyle"
             android:fontFamily="serif"
-            android:hint="Name"
+            android:hint="@string/enter_rest_of_name_here"
             android:inputType="textShortMessage"
             android:padding="8dp"
             android:textColor="#673AB7"
@@ -86,7 +86,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Alert Level"
+            android:text="@string/alert_level"
             android:textSize="18sp" />
 
         <EditText
@@ -96,7 +96,7 @@
             android:layout_margin="8dp"
             android:background="@drawable/buttonstyle"
             android:fontFamily="serif"
-            android:hint="Alert Level"
+            android:hint="@string/alert_level"
             android:inputType="textShortMessage"
             android:padding="8dp"
             android:textColor="#673AB7"
@@ -106,7 +106,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quantity"
+            android:text="@string/quantity"
             android:textSize="18sp" />
 
         <EditText
@@ -116,7 +116,7 @@
             android:layout_margin="8dp"
             android:background="@drawable/buttonstyle"
             android:fontFamily="serif"
-            android:hint="Quantity Level"
+            android:hint="@string/quantity_level"
             android:inputType="textShortMessage"
             android:padding="8dp"
             android:textColor="#673AB7"
@@ -126,7 +126,7 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Popular (1 for yes  0 for no)"
+            android:text="@string/popular_1_for_yes_0_for_no"
             android:textSize="18sp" />
 
         <EditText
@@ -136,7 +136,7 @@
             android:layout_margin="8dp"
             android:background="@drawable/buttonstyle"
             android:fontFamily="serif"
-            android:hint="Popular"
+            android:hint="@string/popular"
             android:inputType="textShortMessage"
             android:padding="8dp"
             android:textColor="#673AB7"
