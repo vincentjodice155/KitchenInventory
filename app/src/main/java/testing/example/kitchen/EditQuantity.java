@@ -78,7 +78,6 @@ public class EditQuantity extends AppCompatActivity {
     }
     public void openHomeScreen(){
         Intent intent = new Intent(this,MainActivity.class);
-        String test = "String";
         startActivity(intent);
     }
 
