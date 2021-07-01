@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,11 +18,9 @@ import android.widget.SearchView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 
-import com.android.volley.AuthFailureError;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -37,7 +34,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-import static testing.example.kitchen.R.layout.record;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
     //Intializing objects for search bar feature
     ListView listV;
-    ArrayAdapter adapter;
     ArrayList<String> searchList;
     SearchView searchV;
 
@@ -65,18 +60,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Creating Search feature
-        listV = (ListView)findViewById(R.id.list);
-        searchV = (SearchView)findViewById(R.id.search);
+        listV = findViewById(R.id.list);
+        searchV = findViewById(R.id.search);
 
 
         //creating instance of button to change to the Add Chocolate Screen
-        changeToAddButton = (Button) findViewById(R.id.changeToAddButton);
-        changeToAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAddScreen();
-            }
-        });
+        changeToAddButton = findViewById(R.id.changeToAddButton);
+        changeToAddButton.setOnClickListener(v -> openAddScreen());
 
 
 
@@ -89,13 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
         loadChocolates();
 
-        refreshButton = (Button) findViewById(R.id.refresh);
-        refreshButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadChocolates();
-            }
-        });
+        refreshButton = findViewById(R.id.refresh);
+        refreshButton.setOnClickListener(v -> loadChocolates());
 
     }
     //Method that creates an intent that changes to Add Chocolate List Screen
@@ -107,35 +92,27 @@ public class MainActivity extends AppCompatActivity {
         final AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
         View mView = getLayoutInflater().inflate(R.layout.custom_dialog_box,null);
 
-        final EditText txt_inputText = (EditText)mView.findViewById(R.id.txt_input);
+        final EditText txt_inputText = mView.findViewById(R.id.txt_input);
 
-        Button btn_cancel = (Button)mView.findViewById(R.id.btn_cancel_pin);
-        Button btn_okay = (Button)mView.findViewById(R.id.btn_enter_pin);
+        Button btn_cancel = mView.findViewById(R.id.btn_cancel_pin);
+        Button btn_okay = mView.findViewById(R.id.btn_enter_pin);
 
         alert.setView(mView);
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
+        btn_cancel.setOnClickListener(v -> alertDialog.dismiss());
+        btn_okay.setOnClickListener(v -> {
+            final String stringPin = txt_inputText.getText().toString();
+            int pinPass = Integer.parseInt(stringPin);
+            if(pinPass == 6789) {
+                Toast.makeText(MainActivity.this, "This is the correct pin", Toast.LENGTH_SHORT).show();
+                startIntent();
             }
-        });
-        btn_okay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String stringPin = txt_inputText.getText().toString();
-                int pinPass = Integer.parseInt(stringPin);
-                if(pinPass == 6789) {
-                    Toast.makeText(MainActivity.this, "This is the correct pin", Toast.LENGTH_SHORT).show();
-                    startIntent();
-                }
-                else{
-                    Toast.makeText(MainActivity.this, "This is not the correct pin", Toast.LENGTH_SHORT).show();
-                }
-                alertDialog.dismiss();
+            else{
+                Toast.makeText(MainActivity.this, "This is not the correct pin", Toast.LENGTH_SHORT).show();
             }
+            alertDialog.dismiss();
         });
         alertDialog.show();
     }
@@ -154,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 //initialized Json array and grab elements in JSon form from Database
                 JSONArray chocolates = new JSONArray(response);
 
-                searchList = new ArrayList<String>();
+                searchList = new ArrayList<>();
                 //initialized list to hold Chocolate Object that will be taken from database
                 chocolateList = new ArrayList<>();
                 priorityChocolateList = new PriorityQueue<>(25,new MyComparator());
@@ -183,11 +160,10 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView.setAdapter(cadapter);
 
                 //sets up adapter to set up search feature
-                adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, searchList);
+                ArrayAdapter adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, searchList);
                 listV.setAdapter(adapter);
                 listV.setOnItemClickListener((parent, view, position, id) -> {
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                    ProgressDialog progressDialog = new ProgressDialog(view.getContext());
 
                     CharSequence[] dialogItem = {"Edit Chocolate Quantity", "Delete Chocolate"};
 
@@ -224,16 +200,11 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-            } catch (JSONException e) {
+            } catch (JSONException ignored) {
 
             }
 
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        }, error -> Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show());
 
         Volley.newRequestQueue(this).add(stringRequest);
     }
@@ -242,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
     //converts popular into a value of Yes for 1 and No for 0
 
     public String isPop(int value){
-        String response = "";
+        String response;
         if(value == 1) {
             response = "Yes";
         }
@@ -256,48 +227,31 @@ public class MainActivity extends AppCompatActivity {
         dialog.setMessage("Please Select on of the two options");
         dialog.setTitle("Deleting " + name);
         dialog.setPositiveButton("Delete Anyways",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        StringRequest request = new StringRequest(Request.Method.POST, Constants.DELETE_URL,
-                                new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-                                        if (response.equalsIgnoreCase("Data Deleted")) {
-                                            Toast.makeText(MainActivity.this, "Data Deleted Successfully", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            Toast.makeText(MainActivity.this, "Data not Deleted Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                }, new Response.ErrorListener() {
+                (dialog1, which) -> {
+                    StringRequest request = new StringRequest(Request.Method.POST, Constants.DELETE_URL,
+                            response -> {
+                                if (response.equalsIgnoreCase("Data Deleted")) {
+                                    Toast.makeText(MainActivity.this, "Data Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(MainActivity.this, "Data not Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                }
+                            }, error -> Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show()) {
+                        @Nullable
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<>();
 
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }) {
-                            @Nullable
-                            @Override
-                            protected Map<String, String> getParams() throws AuthFailureError {
-                                Map<String, String> params = new HashMap<>();
+                            params.put("name", name);
 
-                                params.put("name", name);
-
-                                return params;
-                            }
-                        };
-
-                        requestingQueue(request);
+                            return params;
                         }
+                    };
+
+                    requestingQueue(request);
                     });
 
 
-                dialog.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(MainActivity.this, "Chocolate Item was Not Deleted", Toast.LENGTH_LONG).show();
-                }
-             });
+                dialog.setNegativeButton("cancel", (dialog12, which) -> Toast.makeText(MainActivity.this, "Chocolate Item was Not Deleted", Toast.LENGTH_LONG).show());
                 AlertDialog alertDialog = dialog.create();
                 alertDialog.show();
 

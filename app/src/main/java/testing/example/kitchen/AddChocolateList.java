@@ -13,11 +13,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -31,20 +29,25 @@ import java.util.Map;
 public class AddChocolateList extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private EditText editTextName, editTextAlert, editTextQuantity,editTextPopular;
 
-    private Button buttonDatabaseAdd;
-    private Button backButton;
-    private ProgressDialog progressDialog;
 
-    private Spinner spinner;
+    private ProgressDialog progressDialog;
+    private Button buttonDatabaseAdd;
+    public static String spinnerValue;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_chocolate_list);
 
-        editTextName = (EditText) findViewById(R.id.name_input);
-        editTextAlert = (EditText) findViewById(R.id.alert_input);
-        editTextQuantity = (EditText) findViewById(R.id.quantity_input);
-        editTextPopular = (EditText) findViewById(R.id.popular_input);
+
+        Button backButton;
+        Spinner spinner;
+
+        editTextName = findViewById(R.id.name_input);
+        editTextAlert = findViewById(R.id.alert_input);
+        editTextQuantity = findViewById(R.id.quantity_input);
+        editTextPopular = findViewById(R.id.popular_input);
 
         //creating Spinner Stuff
         spinner = findViewById(R.id.spinner);
@@ -59,19 +62,15 @@ public class AddChocolateList extends AppCompatActivity implements View.OnClickL
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(this);
 
-        buttonDatabaseAdd = (Button) findViewById(R.id.buttonAdd);
+        buttonDatabaseAdd = findViewById(R.id.buttonAdd);
 
         progressDialog = new ProgressDialog(this);
 
         buttonDatabaseAdd.setOnClickListener(this);
 
-        backButton = (Button) findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openHomeScreen();
-            }
-        });
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(v -> openHomeScreen());
 
     }
     public void openHomeScreen(){
@@ -79,9 +78,11 @@ public class AddChocolateList extends AppCompatActivity implements View.OnClickL
         startActivity(intent);
     }
 
+
+
     private void registerUser(){
 
-        final String name = editTextName.getText().toString().trim();
+        final String name = spinnerValue + " " + (editTextName.getText().toString().trim());
         final String alert = editTextAlert.getText().toString().trim();
         final String quantity = editTextQuantity.getText().toString().trim();
         final String popular = editTextPopular.getText().toString().trim();
@@ -91,29 +92,23 @@ public class AddChocolateList extends AppCompatActivity implements View.OnClickL
 
         //creates the request to be sent to the database
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_REGISTER, new Response.Listener<String>() {
-            @Override
-            //Lets you know whether it was successful or not with a message
-            public void onResponse(String response) {
-                progressDialog.dismiss();
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
+        //Lets you know whether it was successful or not with a message
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_REGISTER, response -> {
+            progressDialog.dismiss();
+            try {
+                JSONObject jsonObject = new JSONObject(response);
 
-                    Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
-                }
-                catch(JSONException e){
-                    e.printStackTrace();
-                }
+                Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
+            catch(JSONException e){
+                e.printStackTrace();
             }
+        }, error -> {
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
         }){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
                 params.put("name",name);
                 params.put("alert",alert);
@@ -140,9 +135,8 @@ public class AddChocolateList extends AppCompatActivity implements View.OnClickL
     //Methods for Spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String chocolateType = parent.getItemAtPosition(position).toString();
-        String newChocolateTyoe = chocolateType + " " + editTextName.getText().toString();
-        Toast.makeText(getApplicationContext(),chocolateType,Toast.LENGTH_LONG).show();
+        spinnerValue = parent.getItemAtPosition(position).toString();
+        //Toast.makeText(getApplicationContext(),spinnerValue,Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package testing.example.kitchen;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import static testing.example.kitchen.R.layout.record;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.PriorityQueue;
 
 
@@ -30,7 +30,7 @@ public class ChocolateAdapter extends RecyclerView.Adapter<ChocolateAdapter.Choc
     @Override
     public ChocolateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(record,null);
+        @SuppressLint("InflateParams") View view = inflater.inflate(record,null);
         return new ChocolateViewHolder(view);
 
     }
@@ -55,7 +55,7 @@ public class ChocolateAdapter extends RecyclerView.Adapter<ChocolateAdapter.Choc
         return chocolateList.size();
     }
 
-    class ChocolateViewHolder extends RecyclerView.ViewHolder{
+    static class ChocolateViewHolder extends RecyclerView.ViewHolder{
         TextView textViewName, textViewQuantity;
         public ChocolateViewHolder(View itemView){
             super(itemView);

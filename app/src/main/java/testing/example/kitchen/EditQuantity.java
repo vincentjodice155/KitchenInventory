@@ -6,16 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -24,7 +21,7 @@ import java.util.Map;
 
 public class EditQuantity extends AppCompatActivity {
 
-    private Button updateButton,addButton,subtractButton,backButton;
+
     private EditText eQuantity,eName;
     private int position;
 
@@ -33,7 +30,9 @@ public class EditQuantity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_quantity);
 
-        eName = (EditText) findViewById(R.id.nameOfQuantity);
+        Button updateButton,addButton,subtractButton,backButton;
+
+        eName = findViewById(R.id.nameOfQuantity);
         eQuantity = findViewById(R.id.quantity_ET);
 
         Intent intent = getIntent();
@@ -43,37 +42,17 @@ public class EditQuantity extends AppCompatActivity {
         eName.setText(MainActivity.chocolateList.get(position).getName());
         eQuantity.setText(String.valueOf(MainActivity.chocolateList.get(position).getQuantity()));
 
-        updateButton = (Button) findViewById(R.id.updateButton);
-        updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                update();
-            }
-        });
+        updateButton = findViewById(R.id.updateButton);
+        updateButton.setOnClickListener(v -> update());
 
-        backButton = (Button) findViewById(R.id.goBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openHomeScreen();
-            }
-        });
+        backButton = findViewById(R.id.goBackButton);
+        backButton.setOnClickListener(v -> openHomeScreen());
 
-        addButton = (Button) findViewById(R.id.addButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addQuantity();
-            }
-        });
+        addButton = findViewById(R.id.addButton);
+        addButton.setOnClickListener(v -> addQuantity());
 
-        subtractButton = (Button) findViewById(R.id.subButton);
-        subtractButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                subtractQuantity();
-            }
-        });
+        subtractButton = findViewById(R.id.subButton);
+        subtractButton.setOnClickListener(v -> subtractQuantity());
 
     }
     public void openHomeScreen(){
@@ -114,21 +93,13 @@ public class EditQuantity extends AppCompatActivity {
         progressDialog.setMessage("Updating.....");
         progressDialog.show();
 
-        StringRequest request = new StringRequest(Request.Method.POST, Constants.UPDATE_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                progressDialog.dismiss();
-                Toast.makeText(EditQuantity.this,response, Toast.LENGTH_SHORT).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(EditQuantity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }){
+        StringRequest request = new StringRequest(Request.Method.POST, Constants.UPDATE_URL, response -> {
+            progressDialog.dismiss();
+            Toast.makeText(EditQuantity.this,response, Toast.LENGTH_SHORT).show();
+        }, error -> Toast.makeText(EditQuantity.this,error.getMessage(), Toast.LENGTH_SHORT).show()){
             @Nullable
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
 
                 Map<String,String> params = new HashMap<>();
 

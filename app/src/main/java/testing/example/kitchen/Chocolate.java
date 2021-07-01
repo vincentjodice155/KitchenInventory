@@ -1,11 +1,11 @@
 package testing.example.kitchen;
 
 public class Chocolate {
-    private String name;
-    private int alert;
-    private String popular;
-    private int quantity;
-    private int priority;
+    final private String name;
+    final private int alert;
+    final private String popular;
+    final private int quantity;
+    final private int priority;
 
     public Chocolate(String name, int alert, int quantity, String popular,int priority) {
         this.name = name;
