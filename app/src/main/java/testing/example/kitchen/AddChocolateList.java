@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddChocolateList extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+    //creates the values that user will edit
     private EditText editTextName, editTextAlert, editTextQuantity,editTextPopular;
 
 
@@ -62,6 +63,7 @@ public class AddChocolateList extends AppCompatActivity implements View.OnClickL
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(this);
 
+
         buttonDatabaseAdd = findViewById(R.id.buttonAdd);
 
         progressDialog = new ProgressDialog(this);
@@ -70,18 +72,19 @@ public class AddChocolateList extends AppCompatActivity implements View.OnClickL
 
         backButton = findViewById(R.id.backButton);
 
+        //back button goes from AddChocolateList -> MainActivity
         backButton.setOnClickListener(v -> openHomeScreen());
 
     }
+    //method that goes from AddChocolateList -> MainActivity
     public void openHomeScreen(){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 
-
-
+    //method that adds Chocolates to the Database
     private void registerUser(){
-
+        //name uses dropdown value as well as user entered value
         final String name = spinnerValue + " " + (editTextName.getText().toString().trim());
         final String alert = editTextAlert.getText().toString().trim();
         final String quantity = editTextQuantity.getText().toString().trim();
@@ -107,6 +110,8 @@ public class AddChocolateList extends AppCompatActivity implements View.OnClickL
             progressDialog.dismiss();
             Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
         }){
+            //an override method that was needed to get it to work
+            // it just works don't question it >:D
             @Override
             protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();

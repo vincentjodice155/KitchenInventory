@@ -76,9 +76,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
-
+        //method call to allow the display of priority list of chocolates from database
         loadChocolates();
 
+        //set up button to allow for the app to refresh after deleting a chocolate item
         refreshButton = findViewById(R.id.refresh);
         refreshButton.setOnClickListener(v -> loadChocolates());
 
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         });
         alertDialog.show();
     }
-
+    //Method that switches screens from MainActivity -> AddChocolateList
     private void startIntent(){
         Intent intent = new Intent(this, AddChocolateList.class);
         startActivity(intent);
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (int i = 0; i < chocolates.length(); i++) {
                     JSONObject chocolateObject = chocolates.getJSONObject(i);
-
+                    //pulls all items form JSON file and creates variables for them
                     String name = chocolateObject.getString("name").toLowerCase();
                     int alert = chocolateObject.getInt("alert");
                     int quantity = chocolateObject.getInt("quantity");
@@ -163,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 ArrayAdapter adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, searchList);
                 listV.setAdapter(adapter);
                 listV.setOnItemClickListener((parent, view, position, id) -> {
+                    //Alert Dialog builder allows for you to edit values as well as delete chocolate items
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
                     CharSequence[] dialogItem = {"Edit Chocolate Quantity", "Delete Chocolate"};
@@ -178,8 +180,33 @@ public class MainActivity extends AppCompatActivity {
                                 break;
 
                             case 1:
+                                //creates pin protection for deleting chocolates
+                                final AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                                View mView = getLayoutInflater().inflate(R.layout.custom_dialog_box,null);
 
-                                deleteChocolate(chocolateName);
+                                final EditText txt_inputText = mView.findViewById(R.id.txt_input);
+
+                                Button btn_cancel = mView.findViewById(R.id.btn_cancel_pin);
+                                Button btn_okay = mView.findViewById(R.id.btn_enter_pin);
+
+                                alert.setView(mView);
+                                final AlertDialog alertDialog = alert.create();
+                                alertDialog.setCanceledOnTouchOutside(false);
+
+                                btn_cancel.setOnClickListener(v -> alertDialog.dismiss());
+                                btn_okay.setOnClickListener(v -> {
+                                    final String stringPin = txt_inputText.getText().toString();
+                                    int pinPass = Integer.parseInt(stringPin);
+                                    if(pinPass == 6789) {
+                                        Toast.makeText(MainActivity.this, "This is the correct pin", Toast.LENGTH_SHORT).show();
+                                        deleteChocolate(chocolateName);
+                                    }
+                                    else{
+                                        Toast.makeText(MainActivity.this, "This is not the correct pin", Toast.LENGTH_SHORT).show();
+                                    }
+                                    alertDialog.dismiss();
+                                });
+                                alertDialog.show();
                                 break;
                         }
                     });

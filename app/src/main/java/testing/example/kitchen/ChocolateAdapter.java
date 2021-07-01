@@ -37,6 +37,11 @@ public class ChocolateAdapter extends RecyclerView.Adapter<ChocolateAdapter.Choc
 
     @Override
     public void onBindViewHolder(@NonNull ChocolateViewHolder holder, int position) {
+        // Creates an Array list and empties Priority Queue in Array List
+        // takes all values out of Array List and is able to display in Chocolate need to be made list
+        // this works for each position value
+        // puts all values of Array List back into Priority Queue
+
         ArrayList<Chocolate> removedItems = new ArrayList<>();
 
         while(!chocolateList.isEmpty()) {
