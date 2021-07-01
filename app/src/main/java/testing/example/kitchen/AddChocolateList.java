@@ -54,9 +54,9 @@ public class AddChocolateList extends AppCompatActivity implements View.OnClickL
         spinner = findViewById(R.id.spinner);
 
         ArrayList<String> chocolateTypes = new ArrayList<>();
-        chocolateTypes.add("Milk Chocolate");
-        chocolateTypes.add("Dark Chocolate");
-        chocolateTypes.add("White Chocolate");
+        chocolateTypes.add("Mk");
+        chocolateTypes.add("Dk");
+        chocolateTypes.add("Wh");
 
         ArrayAdapter spinnerAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,chocolateTypes);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

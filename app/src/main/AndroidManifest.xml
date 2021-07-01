@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kitchen">
-        <activity android:name=".EditQuantity"></activity>
+        <activity android:name=".EditQuantity" />
         <activity android:name=".AddChocolateList" />
         <activity android:name=".MainActivity">
             <intent-filter>

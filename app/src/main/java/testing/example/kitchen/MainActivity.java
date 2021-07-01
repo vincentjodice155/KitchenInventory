@@ -104,15 +104,15 @@ public class MainActivity extends AppCompatActivity {
 
         btn_cancel.setOnClickListener(v -> alertDialog.dismiss());
         btn_okay.setOnClickListener(v -> {
-            final String stringPin = txt_inputText.getText().toString();
-            int pinPass = Integer.parseInt(stringPin);
-            if(pinPass == 6789) {
-                Toast.makeText(MainActivity.this, "This is the correct pin", Toast.LENGTH_SHORT).show();
+            //final String stringPin = txt_inputText.getText().toString();
+            //int pinPass = Integer.parseInt(stringPin);
+            //if(pinPass == 6789) {
+               // Toast.makeText(MainActivity.this, "This is the correct pin", Toast.LENGTH_SHORT).show();
                 startIntent();
-            }
-            else{
-                Toast.makeText(MainActivity.this, "This is not the correct pin", Toast.LENGTH_SHORT).show();
-            }
+           // }
+          //  else{
+           //     Toast.makeText(MainActivity.this, "This is not the correct pin", Toast.LENGTH_SHORT).show();
+           // }
             alertDialog.dismiss();
         });
         alertDialog.show();
