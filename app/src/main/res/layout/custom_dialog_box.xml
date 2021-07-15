@@ -20,28 +20,28 @@
         android:textSize="20sp"
         android:inputType="textShortMessage"
         />
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
+        android:layout_height="wrap_content">
+
         <Button
-            android:layout_width="match_parent"
+            android:id="@+id/btn_cancel_pin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="#808080"
             android:text="Cancel"
             android:textColor="#ffffff"
-            android:backgroundTint="#E905FA"
-            android:textSize="18sp"
-            android:layout_weight="1"
-            android:id="@+id/btn_cancel_pin"/>
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btn_enter_pin"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_alignParentRight="true"
             android:text="Enter"
             android:textColor="#ffffff"
             android:backgroundTint="#E905FA"
             android:textSize="18sp" />
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

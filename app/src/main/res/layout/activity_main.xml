@@ -18,42 +18,48 @@
         android:id="@+id/list"
         android:layout_width="398dp"
         android:layout_height="188dp"
-        android:layout_below="@+id/search" />
+        android:layout_below="@+id/search"
+        android:layout_marginBottom="30dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/changeToAddButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="serif"
-            android:onClick="AddEmployee"
-            android:text="Add Chocolates to list"
-            android:textSize="20sp"
-            app:backgroundTint="#F607EA" />
+            <Button
+                android:id="@+id/changeToAddButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="serif"
+                android:onClick="AddEmployee"
+                android:text="Add Chocolates to list"
+                android:textSize="20sp"
+                app:backgroundTint="#F607EA" />
 
-        <Button
-            android:id="@+id/refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="serif"
-            android:text="Refresh"
-            android:textSize="20sp"
-            app:backgroundTint="#F607EA" />
+            <Button
+                android:id="@+id/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:fontFamily="serif"
+                android:text="Refresh"
+                android:textSize="20sp"
+                app:backgroundTint="#808080" />
+            </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="Chocolate that need to made"
+            android:text="Chocolate That Need To Be Made"
             android:textColor="#000"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginTop="30dp"/>
 
         <TableLayout
             android:id="@+id/table_layout"

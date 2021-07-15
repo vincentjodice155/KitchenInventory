@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="@string/go_back_to_home"
         android:textSize="20sp"
-        app:backgroundTint="#F607EA"
+        app:backgroundTint="#808080"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +43,8 @@
         android:background="@drawable/layoutstyle"
         android:orientation="vertical"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-74dp"
-        tools:layout_editor_absoluteY="202dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="133dp">
 
         <TextView
             android:layout_width="wrap_content"
