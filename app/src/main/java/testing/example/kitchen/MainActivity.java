@@ -251,16 +251,16 @@ public class MainActivity extends AppCompatActivity {
     }
     private void deleteChocolate(final String name){
         android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(this);
-        dialog.setMessage("Please Select on of the two options");
+        dialog.setMessage("Please select one of the two options below.");
         dialog.setTitle("Deleting " + name);
         dialog.setPositiveButton("Delete Anyways",
                 (dialog1, which) -> {
                     StringRequest request = new StringRequest(Request.Method.POST, Constants.DELETE_URL,
                             response -> {
                                 if (response.equalsIgnoreCase("Data Deleted")) {
-                                    Toast.makeText(MainActivity.this, "Data Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "Chocolate Deleted Successfully", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(MainActivity.this, "Data not Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "Data Failed To Delete", Toast.LENGTH_SHORT).show();
                                 }
                             }, error -> Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show()) {
                         @Nullable
