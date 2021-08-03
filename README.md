@@ -17,6 +17,12 @@ The list of software that we used for this project is:
 * Android studio code (Java for functionality and XML for design)
 * Visual Studio code (write PHP code)
 
+Description of PHP Code File
+
+* includes folder contains PHP files that initialize database variables and create database connection
+* V1 folder containt PHP files for adding, reading, updating, and deleting chocolates from the database
+
+
 
 
 
