@@ -32,8 +32,9 @@ Description of App -> src -> Main -> Kitchen Files
 * MainActivity.java file = functionality for the main page that you see when you initially open the app
 * MyComparator.java file = configures the rules for how the priority queue compares values
 
-Description of App -> src -> Main
+App -> src -> Main -> res files contain all of the XML files that are used in Android Studio code in order to format the application and make it look nice. (Very similar to CSS for HTML but not exactly)
 
+Hope you enjoy looking at our code! 😛
 
 
 
